@@ -5,12 +5,19 @@ import fetch from "node-fetch";
 
 const proxy = httpProxy.createProxyServer({});
 const SANDBOX_API = "https://appopen.app/api/v1/sandboxes";
+const SANDBOX_API_KEY = "sk_umrBqEOcEfO8xkuaT2CbXIbSb14BADGwKZHdDJH1eBc"
 
 // Simple cache so we don’t hammer the API
 let sandboxCache = [];
 async function refreshSandboxes() {
   try {
-    const res = await fetch(SANDBOX_API);
+    const res = await fetch(SANDBOX_API, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${SANDBOX_API_KEY}`
+    }
+  });
     const data = await res.json();
     sandboxCache = data.sandboxes || [];
   } catch (err) {

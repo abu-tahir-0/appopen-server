@@ -4,7 +4,7 @@ import httpProxy from "http-proxy";
 import fetch from "node-fetch";
 
 const proxy = httpProxy.createProxyServer({});
-const SANDBOX_API = "https://appopen.app/api/v1/sandboxes";
+const SANDBOX_API = "https://sociox.in/api/v1/sandboxes";
 const SANDBOX_API_KEY = "sk_umrBqEOcEfO8xkuaT2CbXIbSb14BADGwKZHdDJH1eBc"
 
 // Simple cache so we don’t hammer the API
